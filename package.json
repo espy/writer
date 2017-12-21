@@ -1,0 +1,24 @@
+{
+  "name": "writer",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "bankai build index.js",
+    "inspect": "bankai inspect index.js",
+    "start": "bankai start index.js",
+    "test": "standard && npm run test-deps",
+    "test-deps": "dependency-check . && dependency-check . --extra --no-dev -i tachyons"
+  },
+  "dependencies": {
+    "choo": "^6.6.0",
+    "choo-devtools": "^2.2.0",
+    "choo-service-worker": "^2.3.1",
+    "sheetify": "^6.2.0",
+    "tachyons": "^4.9.0"
+  },
+  "devDependencies": {
+    "bankai": "^9.0.1",
+    "dependency-check": "^2.9.1",
+    "standard": "^10.0.3"
+  }
+}
