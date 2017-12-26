@@ -1,8 +1,8 @@
-var css = require('sheetify')
-var choo = require('choo')
-var store = require('./store')
+const css = require('sheetify')
+const choo = require('choo')
 
 css('tachyons')
+css('./assets/main.css')
 
 var app = choo()
 if (process.env.NODE_ENV !== 'production') {
@@ -13,9 +13,12 @@ if (process.env.NODE_ENV !== 'production') {
   // app.use(require('choo-service-worker')())
 }
 
-app.use(store)
+// Stores
+app.use(require('./stores/text-store'))
+app.use(require('./stores/synonym-store'))
 
 app.route('/', require('./views/main'))
+app.route('/day/:date', require('./views/main'))
 app.route('/*', require('./views/404'))
 
 if (!module.parent) app.mount('body')

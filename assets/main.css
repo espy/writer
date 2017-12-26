@@ -1,0 +1,73 @@
+:root {
+  --bg: #000;
+  --text: #FFF;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg);
+  color: var(--text);
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-template-rows: 2em auto 2em;
+  grid-template-areas: "header header" "file-browser main" "footer footer";
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.file-browser {
+  grid-area: file-browser;
+  width: 300px;
+  padding: 1em;
+  border-right: 1px solid #333333;
+}
+
+.sidebar__list li{
+  color: #CCC;
+}
+
+.sidebar__list li.active{
+  color: var(--text);
+  border-left: 3px solid currentColor;
+  padding-left: 3px;
+  margin-left: -6px;
+}
+
+.text-pane {
+  grid-area: main;
+}
+
+.text-pane textarea {
+  color: var(--text);
+  border: 0;
+  resize: none;
+  background: transparent;
+  overflow: hidden;
+  padding: 1em;
+  width: 100%;
+  height: 100%;
+}
+
+.text-pane textarea:hover,
+.text-pane textarea:focus {
+  outline: none;
+}
+
+footer {
+  grid-area: footer;
+}
