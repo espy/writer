@@ -16,7 +16,7 @@ function view (state, emit) {
         : ''
       }
       ${footer(state, emit)}
-      ${component.render('red')}
+      ${component.render('red', state, emit)}
     </body>
   `
 }

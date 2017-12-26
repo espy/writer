@@ -7,11 +7,20 @@ class Thingy extends Nanocomponent {
     this.color = null
   }
 
-  createElement (color) {
+  wtf (e) {
+    console.log('wtf', e)
+    this.state.lol = 'erm'
+    this.emit('render')
+  }
+
+  createElement (color, state, emit) {
     this.color = color
+    this.state = state
+    this.emit = emit
+    this.wtf = this.wtf.bind(this)
     return html`
-      <div style="background-color: ${color}">
-        Color is ${color}, ${Math.random(1)}
+      <div style="background-color: ${color}" onclick=${this.wtf}>
+        ${Math.random(1)}, ${this.state.synonyms.synonyms.length}
       </div>
     `
   }
