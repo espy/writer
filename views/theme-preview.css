@@ -33,12 +33,17 @@
   animation-delay: 0s;
 }
 
-.theme-preview--name {
+.theme-preview--description {
   color: var(--f_high);
   width: 100%;
   font-size: 14px;
   text-align: center;
   padding: 0.5em 0 0.75em;
+}
+
+.theme-preview--name {
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
 .theme-preview--swatch {

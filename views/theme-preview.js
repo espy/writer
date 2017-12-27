@@ -14,7 +14,7 @@ function view (themeName, emit) {
   return html`
     <div class='theme-preview-container'>
       <div class='theme-preview'>
-        <div class='theme-preview--name'>Loaded the <strong>${themeName}</strong> theme</div>
+        <div class='theme-preview--description'>Loaded the <span class='theme-preview--name'>${themeName}</span> theme</div>
         <div class='theme-preview--swatch f-high'></div>
         <div class='theme-preview--swatch f-med'></div>
         <div class='theme-preview--swatch f-low'></div>
