@@ -29,7 +29,6 @@ module.exports = function (state, emitter) {
       return text.date === updatedText.date
     })
     state.texts[textIndex] = updatedText
-    // This one doesn’t render, it only saves changes
-    // emitter.emit('render')
+    emitter.emit('render')
   }
 }

@@ -1,53 +1,72 @@
 const html = require('choo/html')
+const Nanocomponent = require('nanocomponent')
 const synonyms = require('../common/synonyms_en_us')()
 
-function view (state, emit) {
-  console.log('rendering')
-  let currentText = state.texts.find((text) => {
-    return text.date === state.params.date
-  }) || {
-    text: ''
+class TextPane extends Nanocomponent {
+  createElement (state, emit) {
+    this.state = state
+    this.emit = emit
+    this.onInputChange = this.onInputChange.bind(this)
+    this.onKeyDown = this.onKeyDown.bind(this)
+    this.currentText = this.getCurrentText()
+
+    return html`
+    <section class='text-pane'>
+      <textarea
+        onkeyup=${this.onInputChange}
+        onkeydown=${this.onKeyDown}>
+        ${this.currentText.text}
+      </textarea>
+    </section>
+    `
   }
 
-  function resetSynonymState (e) {
-    if (state.synonyms.synonyms && state.synonyms.synonyms.length > 0) {
-      console.log('cursor to ', state.synonyms.originalWordEnd)
-      const end = state.synonyms.originalWordEnd
-      emit('synonyms:reset')
-      // FIX: setting the selection is probably reverted by another emit
-      e.target.focus()
-      // neither works
-      // e.target.setSelectionRange(end, end)
-      e.target.selectionEnd = end
+  // Should the component re-render?
+  update (state, emit) {
+    // return true (do re-render) if the current text isn’t for the current date
+    return this.state.params.date !== this.currentText.date
+  }
+
+  getCurrentText () {
+    return this.state.texts.find((text) => {
+      return text.date === this.state.params.date
+    }) || {
+      text: ''
     }
   }
 
-  function onInputChange (e) {
+  resetSynonymState (e) {
+    if (this.state.synonyms.synonyms && this.state.synonyms.synonyms.length > 0) {
+      this.emit('synonyms:reset')
+    }
+  }
+
+  onInputChange (e) {
     if (e.keyCode === 9 || e.keyCode === 13 || e.keyCode === 27) {
       return
     }
-    emit('text:update', {
-      date: currentText.date,
-      name: currentText.name,
+    this.emit('text:update', {
+      date: this.currentText.date,
+      name: this.currentText.name,
       text: e.target.value,
       chars: e.target.value.length,
       words: e.target.value.split(' ').length
     })
     // Always reset if not TAB or SHIFT-TAB or ENTER
-    resetSynonymState(e)
+    this.resetSynonymState(e)
   }
 
-  function onKeyDown (e) {
+  onKeyDown (e) {
     // TAB
     if (e.keyCode === 9) {
       e.preventDefault()
       // already displaying a list of synonyms
-      if (state.synonyms.synonyms && state.synonyms.synonyms.length > 0) {
+      if (this.state.synonyms.synonyms && this.state.synonyms.synonyms.length > 0) {
         // Let’s navigate up and down in that list
         if (e.shiftKey) {
-          emit('synonyms:prev')
+          this.emit('synonyms:prev')
         } else {
-          emit('synonyms:next')
+          this.emit('synonyms:next')
         }
         return
       }
@@ -66,41 +85,37 @@ function view (state, emit) {
         if (selectedWord) selectedWord = selectedWord.replace(/['";:,.\/?!\\-]$/, '')
         const selection = synonyms[selectedWord.toLowerCase()]
         console.log(selectedWord, selection)
-        emit('synonyms:show', {synonyms: selection, originalWordStart: result.index, originalWordEnd: endPos, originalWord: selectedWord})
+        this.emit('synonyms:show', {synonyms: selection, originalWordStart: result.index, originalWordEnd: endPos, originalWord: selectedWord})
       }
       return
     }
     // Enter to apply the currently active synonym
-    if (e.keyCode === 13 && state.synonyms.synonyms && state.synonyms.synonyms.length > 0) {
+    if (e.keyCode === 13 && this.state.synonyms.synonyms && this.state.synonyms.synonyms.length > 0) {
+      e.preventDefault()
       // replace selected word
-      const synonym = state.synonyms.synonyms[state.synonyms.currentSynonym]
-      const updatedText = e.target.value.substring(0, state.synonyms.originalWordStart) + synonym + e.target.value.substring(state.synonyms.originalWordEnd)
-      emit('text:update', {
-        date: currentText.date,
-        name: currentText.name,
+      const synonym = this.state.synonyms.synonyms[this.state.synonyms.currentSynonym]
+      const updatedText = e.target.value.substring(0, this.state.synonyms.originalWordStart) + synonym + e.target.value.substring(this.state.synonyms.originalWordEnd)
+      // Update the textfield value
+      e.target.value = updatedText
+      // Re-apply the caret position
+      const selectionEnd = this.state.synonyms.originalWordStart + synonym.length
+      e.target.setSelectionRange(selectionEnd, selectionEnd)
+      // Store the updated text
+      this.emit('text:update', {
+        date: this.currentText.date,
+        name: this.currentText.name,
         text: updatedText,
         chars: e.target.value.length,
-        words: e.target.value.split(' ').length,
-        selection: [state.synonyms.originalWordEnd, state.synonyms.originalWordEnd]
+        words: e.target.value.split(' ').length
       })
-      resetSynonymState(e)
+      this.resetSynonymState(e)
       return
     }
     // ESC
     if (e.keyCode === 27) {
-      resetSynonymState(e)
+      this.resetSynonymState(e)
     }
   }
-
-  return html`
-    <section class='text-pane'>
-      <textarea
-        onkeyup=${onInputChange}
-        onkeydown=${onKeyDown}>
-        ${currentText.text}
-      </textarea>
-    </section>
-  `
 }
 
-module.exports = view
+module.exports = TextPane

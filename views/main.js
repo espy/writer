@@ -1,9 +1,8 @@
 const html = require('choo/html')
 const fileBrowser = require('./file-browser')
-const textPane = require('./text-pane')
+const TextPane = require('./text-pane')
+const textPane = new TextPane()
 const footer = require('./footer')
-const Thingy = require('./component')
-const component = new Thingy()
 
 module.exports = view
 
@@ -12,11 +11,10 @@ function view (state, emit) {
     <body class="sans-serif">
       ${fileBrowser(state, emit)}
       ${state.params.date
-        ? textPane(state, emit)
+        ? textPane.render(state, emit)
         : ''
       }
       ${footer(state, emit)}
-      ${component.render('red', state, emit)}
     </body>
   `
 }
