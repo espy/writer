@@ -1,3 +1,22 @@
+/*
+
+A store to handle view state.
+
+Listens to:
+
+emit('viewstate:add',{
+  key: 'theme',
+  value: 'could be anything'
+})
+
+Adds the passed object to `state.viewstate[object.key]`
+
+emit('viewstate:remove', stateKey)
+
+Removes the key and object specified by `stateKey`
+
+*/
+
 module.exports = function (state, emitter) {
   state.viewstate = {}
 
@@ -10,8 +29,8 @@ module.exports = function (state, emitter) {
 
   emitter.on('viewstate:remove', onRemoveViewState)
 
-  function onRemoveViewState (stateType) {
-    delete state.viewstate[stateType]
+  function onRemoveViewState (stateKey) {
+    delete state.viewstate[stateKey]
     emitter.emit('render')
   }
 }
