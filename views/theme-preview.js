@@ -1,5 +1,8 @@
 const html = require('choo/html')
 
+const css = require('sheetify')
+css('./theme-preview.css')
+
 module.exports = view
 
 function view (themeName, emit) {

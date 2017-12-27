@@ -1,0 +1,74 @@
+
+@keyframes themePopup{
+  0% { opacity: 0 }
+  20% { opacity: 1 }
+  80% { opacity: 1 }
+  100% { opacity: 0 }
+}
+
+.theme-preview-container {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme-preview {
+  background: var(--background);
+  border: 1px solid var(--f_high);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 200px;
+  padding: 25px;
+  box-sizing: content-box;
+  animation: themePopup ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: 2s;
+  animation-delay: 0s;
+}
+
+.theme-preview--name {
+  color: var(--f_high);
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  padding: 0.5em 0 0.75em;
+}
+
+.theme-preview--swatch {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+}
+
+.f-high{
+  background: var(--f_high);
+}
+.f-med {
+  background: var(--f_med);
+}
+.f-low {
+  background: var(--f_low);
+}
+.f-inv {
+  background: var(--f_inv);
+}
+.b-high {
+  background: var(--b_high);
+}
+.b-med {
+  background: var(--b_med);
+}
+.b-low {
+  background: var(--b_low);
+}
+.b-inv {
+  background: var(--b_inv);
+}
