@@ -25,7 +25,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   width: 200px;
-  padding: 25px;
+  padding: 10px 20px 20px;
   box-sizing: content-box;
   animation: themePopup ease-in 1;
   animation-fill-mode: forwards;
