@@ -17,6 +17,10 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(require('./stores/text-store'))
 app.use(require('./stores/synonym-store'))
 
+// Global handlers
+app.use(require('./common/drop-handler'))
+app.use(require('./common/theme-handler'))
+
 app.route('/', require('./views/main'))
 app.route('/day/:date', require('./views/main'))
 app.route('/*', require('./views/404'))

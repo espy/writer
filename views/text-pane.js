@@ -31,7 +31,7 @@ class TextPane extends Nanocomponent {
     return this.state.texts.find((text) => {
       return text.date === this.state.params.date
     }) || {
-      text: ''
+      text: 'No text stored for this date'
     }
   }
 

@@ -1,6 +1,13 @@
 :root {
-  --bg: #000;
-  --text: #FFF;
+  --background: #000;
+  --f_high: #fff;
+  --f_med: #999;
+  --f_low: #555;
+  --f_inv: #000;
+  --b_high: #000;
+  --b_med: #555;
+  --b_low: #222;
+  --b_inv: #fff;
 }
 
 body {
@@ -11,8 +18,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--bg);
-  color: var(--text);
+  background: var(--background);
+  color: var(--f_high);
   display: grid;
   grid-template-columns: 300px auto;
   grid-template-rows: 2em auto 2em;
@@ -20,7 +27,7 @@ body {
 }
 
 a {
-  color: var(--text);
+  color: var(--f_high);
   text-decoration: none;
 }
 
@@ -34,15 +41,15 @@ ul {
   grid-area: file-browser;
   width: 300px;
   padding: 1em;
-  border-right: 1px solid #333333;
+  border-right: 1px solid var(--f_low);
 }
 
 .sidebar__list li{
-  color: #CCC;
+  color: var(--f_med);
 }
 
 .sidebar__list li.active{
-  color: var(--text);
+  color: var(--f_high);
   border-left: 3px solid currentColor;
   padding-left: 3px;
   margin-left: -6px;
@@ -53,7 +60,7 @@ ul {
 }
 
 .text-pane textarea {
-  color: var(--text);
+  color: var(--f_high);
   border: 0;
   resize: none;
   background: transparent;
