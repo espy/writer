@@ -5,6 +5,20 @@ A writing app that encourages regular writing, tracks word count goals and regul
 
 There is a file browsing shelf on the left side, which is basically a calendar. Highligting a file will preview it in the main pane on the right.
 
+## Roadmap
+- [ ] Calendarised file menu in the sidebar, you select days, not actual files.
+  - [ ] File previews show stats (wordcount, date)
+- [x] Themeable with hundredrabbits `.thm` files, per drag and drop, with preview
+  - [ ] Once file storage is implemented, add a theme management pane
+- [x] Character, word and line count
+- [ ] Synonym suggestions on <key>tab</key>
+  - [x] Basic implementation
+  - [ ] Better dictionary
+  - [ ] Use stemmer to find word stems
+  - [ ] Support more languages
+- [ ] Electronise the app!
+  - [ ] Store all files (texts and themes) on disk
+
 ## Routes
 Route              | File               | Description                     |
 -------------------|--------------------|---------------------------------|
