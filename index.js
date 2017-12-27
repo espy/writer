@@ -14,6 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Stores
+app.use(require('./stores/view-state-store'))
 app.use(require('./stores/text-store'))
 app.use(require('./stores/synonym-store'))
 

@@ -2,6 +2,7 @@ const html = require('choo/html')
 const fileBrowser = require('./file-browser')
 const TextPane = require('./text-pane')
 const textPane = new TextPane()
+const themePreview = require('./theme-preview')
 const footer = require('./footer')
 
 module.exports = view
@@ -18,6 +19,7 @@ function view (state, emit) {
         ? textPane.render(state, emit)
         : ''
       }
+      ${state.viewstate.theme && themePreview(state.viewstate.theme, emit)}
       ${footer(state, emit)}
     </body>
   `

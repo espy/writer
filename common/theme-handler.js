@@ -39,5 +39,9 @@ module.exports = function (state, emitter) {
     }
     document.head.appendChild(style)
     console.log(` 🎨 Loaded the ${path.split('.').shift()} theme.`)
+    emitter.emit('viewstate:add', {
+      key: 'theme',
+      value: path.split('.').shift()
+    })
   }
 }
