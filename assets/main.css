@@ -10,7 +10,14 @@
   --b_inv: #fff;
 }
 
+/* Frameless Electron windows aren’t draggable. Here we make everything undraggable, and then explicitly allow dragging on the body. This results in only the top bar (where the traffic light buttons are) being used as a drag handle for the entire window */
+
+* {
+  -webkit-app-region: no-drag;
+}
+
 body {
+  -webkit-app-region: drag;
   margin: 0;
   padding: 0;
   position: absolute;
