@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "electron": "electron main.js",
+    "electron-dev": "npm run build && npm run modify-dist && electron main.js",
+    "modify-dist": "node scripts/modify-dist.js",
     "build": "bankai build index.js",
     "inspect": "bankai inspect index.js",
     "start": "bankai start index.js",
@@ -21,6 +24,9 @@
   "devDependencies": {
     "bankai": "^9.0.1",
     "dependency-check": "^2.9.1",
+    "electron": "^1.7.10",
+    "electron-collection": "^1.2.0",
+    "shelljs": "^0.7.8",
     "standard": "^10.0.3"
   }
 }
