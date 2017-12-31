@@ -1,0 +1,42 @@
+{
+  "name": "writer-electron",
+  "version": "1.0.0",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "build": "bankai build && build",
+    "dev": "bankai start index.js",
+    "inspect": "bankai inspect index.js",
+    "pack": "bankai build && build --dir",
+    "start": "NODE_ENV=development electron --ignore-certificate-errors --disable-http-cache main.js",
+    "test": "standard && test-deps",
+    "test-deps": "dependency-check . && dependency-check . --extra --no-dev -i tachyons"
+  },
+  "build": {
+    "appId": "writer-electron",
+    "directories": {
+      "output": "electron_dist"
+    },
+    "files": [
+      "**/*"
+    ],
+    "win": {
+      "target": [
+        "squirrel"
+      ]
+    }
+  },
+  "dependencies": {
+    "choo": "^6.6.0",
+    "choo-devtools": "^2.2.0",
+    "electron-collection": "^1.2.0",
+    "tachyons": "^4.9.0"
+  },
+  "devDependencies": {
+    "bankai": "^8.1.1",
+    "electron": "^1.7.10",
+    "electron-builder": "^19.49.2",
+    "electron-builder-squirrel-windows": "^19.49.0",
+    "standard": "^10.0.3"
+  }
+}

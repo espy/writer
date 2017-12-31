@@ -1,0 +1,8 @@
+node_modules/
+.nyc_output/
+coverage/
+dist/
+electron_dist/
+tmp/
+npm-debug.log*
+.DS_Store
