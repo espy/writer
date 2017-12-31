@@ -1,0 +1,82 @@
+:root {
+  --background: #000;
+  --f_high: #fff;
+  --f_med: #999;
+  --f_low: #555;
+  --f_inv: #000;
+  --b_high: #000;
+  --b_med: #555;
+  --b_low: #222;
+  --b_inv: #fff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background);
+  color: var(--f_high);
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-template-rows: 2em auto 2em;
+  grid-template-areas: "header header" "file-browser main" "footer footer";
+}
+
+a {
+  color: var(--f_high);
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.file-browser {
+  grid-area: file-browser;
+  width: 300px;
+  padding: 1em;
+  border-right: 1px solid var(--f_low);
+}
+
+.sidebar__list li{
+  color: var(--f_med);
+}
+
+.sidebar__list li.active{
+  color: var(--f_high);
+  border-left: 3px solid currentColor;
+  padding-left: 3px;
+  margin-left: -6px;
+}
+
+.text-pane {
+  grid-area: main;
+}
+
+.text-pane textarea {
+  color: var(--f_high);
+  border: 0;
+  resize: none;
+  background: transparent;
+  overflow: hidden;
+  padding: 1em;
+  width: 100%;
+  height: 100%;
+  line-height: 1.25;
+}
+
+.text-pane textarea:hover,
+.text-pane textarea:focus {
+  outline: none;
+}
+
+footer {
+  grid-area: footer;
+  padding: 0.5em 1em;
+}
