@@ -1,5 +1,5 @@
 {
-  "name": "writer-electron",
+  "name": "writer",
   "version": "1.0.0",
   "private": true,
   "main": "main.js",
@@ -13,7 +13,7 @@
     "test-deps": "dependency-check . && dependency-check . --extra --no-dev -i tachyons"
   },
   "build": {
-    "appId": "writer-electron",
+    "appId": "writer",
     "directories": {
       "output": "electron_dist"
     },
