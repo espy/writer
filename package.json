@@ -17,6 +17,9 @@
     "directories": {
       "output": "electron_dist"
     },
+    "extraResources": [
+      "extra-resources"
+    ],
     "files": [
       "**/*"
     ],
