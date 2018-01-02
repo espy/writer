@@ -33,6 +33,7 @@
     "choo": "^6.6.0",
     "choo-devtools": "^2.2.0",
     "electron-collection": "^1.2.0",
+    "fs-extra": "^5.0.0",
     "moment": "^2.20.1",
     "nanocomponent": "^6.5.0",
     "tachyons": "^4.9.0"
