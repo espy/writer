@@ -23,6 +23,8 @@ There is a file browsing shelf on the left side, which is basically a calendar. 
 
 You need two terminals running at once, one with `$ npm run build`, which runs the Bankai server and hosts the Choo app, and one with `$ npm start`, which runs the dev instance of Electron.
 
+To set the app icon for this dev instance on MacOS, show the file info for `node_modules/electron/dist/Electron.app` and drag the `./build/icon.icns` file onto the icon in the info pane.
+
 # Packaging the Electron app
 
 Run `$ npm run build`. It will use icon files put in `./build`.
