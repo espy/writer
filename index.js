@@ -15,6 +15,9 @@ if (process.env.NODE_ENV !== 'production') {
   // app.use(require('choo-service-worker')())
 }
 
+// Helpers
+app.use(require('./common/paths'))
+
 // Stores
 app.use(require('./stores/view-state-store'))
 app.use(require('./stores/text-store'))
