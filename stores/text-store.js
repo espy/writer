@@ -3,13 +3,14 @@ const path = window.require('path')
 const fs = window.require('fs-extra')
 
 module.exports = function (state, emitter) {
+  console.log('unset')
   state.texts = []
   state.currentText = {
     text: 'No text loaded',
     date: undefined
   }
   const textsPath = path.join(state.paths.userData, 'texts')
-  const today = moment().format('DD-MM-YYYY')
+  const today = moment().format('YYYY-MM-DD')
   const welcomeText = 'Welcome to the daily writer. This might be the central challenge of our time, being, as we are, on the cusp of any number of major systems reaching inflection points, from global climate and temperature to the cost of solar power to the capacity of batteries to the possibilities of genetic engineering to the capabilities of AI, whatever your opinions of that may be. Truths that have been held for centuries are wobbling, huge dominoes forged of decades of assumptions and certainties are about to topple and kick off chains of events that will change human life on this planet so significantly we’ll all have trouble keeping up.'
 
   function firstRun () {
@@ -44,15 +45,16 @@ module.exports = function (state, emitter) {
     }
   })
 
-  emitter.on('texts:available', onTextAvailable)
+  emitter.on('texts:available', onTextsAvailable)
 
-  function onTextAvailable (path) {
+  function onTextsAvailable (path) {
     if (path) {
       fs.readdir(path, function (err, items) {
-        console.log('available texts: ', items)
+        // remove `.txt`, sort, and order so recent is at top.
         state.texts = items.map((item) => {
           return item.split('.')[0]
-        })
+        }).sort().reverse()
+        console.log('available texts on disk: ', state.texts)
         emitter.emit('render')
         if (err) {
           console.log('error loading user texts:', err)

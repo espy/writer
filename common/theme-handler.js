@@ -37,7 +37,7 @@ module.exports = function (state, emitter) {
       style.appendChild(document.createTextNode(css))
     }
     document.head.appendChild(style)
-    const themeName = path.split('/').pop().split('.').shift()
+    const themeName = path.split('/').pop().split('.')[0]
     console.log(` 🎨 Loaded the ${themeName} theme.`)
     emitter.emit('viewstate:add', {
       key: 'theme',
