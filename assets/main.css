@@ -82,6 +82,10 @@ ul {
   outline: none;
 }
 
+.text-pane textarea::selection {
+  background: var(--b_med);
+}
+
 footer {
   grid-area: footer;
   padding: 0.5em 1em;
