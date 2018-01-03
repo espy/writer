@@ -18,7 +18,7 @@
 
 body {
   -webkit-app-region: drag;
-  padding: 0;
+  padding: 30px 0 0 0;
   position: absolute;
   top: 0;
   left: 0;
@@ -84,6 +84,11 @@ ul {
 
 .text-pane textarea::selection {
   background: var(--b_med);
+}
+
+header {
+  grid-area: header;
+  padding: 0.5em 1em;
 }
 
 footer {

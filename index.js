@@ -23,6 +23,7 @@ app.use(require('./stores/view-state-store'))
 app.use(require('./stores/text-store'))
 app.use(require('./stores/synonym-store'))
 app.use(require('./stores/theme-store'))
+app.use(require('./stores/search-store'))
 
 // Global handlers
 app.use(require('./common/drop-handler'))
