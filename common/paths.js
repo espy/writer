@@ -18,13 +18,19 @@ module.exports = (state, emit) => {
   console.log('remote.app.getPath(appData)', remote.app.getPath('appData'))
   const extraResources = remote.process.env.NODE_ENV === 'development' ? path.join(remote.process.cwd(), 'electron_dist', 'mac', 'writer.app', 'Contents', 'Resources', 'extra-resources') : path.join(remote.process.resourcesPath, 'extra-resources')
   const userData = path.join(remote.app.getPath('appData'), 'writer')
+  const app = remote.process.env.NODE_ENV === 'development' ? path.join(remote.process.cwd(), 'index.html') : path.join(remote.app.getAppPath(), 'index_prod.html')
   state.paths = {
     extraResources,
-    userData
+    userData,
+    app
   }
 }
 
   /*
+
+  dev file:///Users/espy/Sites/writer/index.html
+  prod file:///Users/espy/Sites/writer/electron_dist/mac/writer.app/Contents/Resources/app.asar/index_prod.html
+
   Paths in Electron are weird.
   Development:
   - choo is running via Bankai (npm run dev), electron is wrapping choo (npm start)

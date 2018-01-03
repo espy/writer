@@ -10,9 +10,9 @@ function view (state, emit) {
           html`<li className=${state.synonyms.currentSynonym === index ? 'active' : ''}>${synonym}</li>`
         )
         : state.texts.map((text) => {
-          const weekday = moment.weekdays()[moment(text.date, 'DD-MM-YYYY').weekday()]
+          const weekday = moment.weekdays()[moment(text, 'DD-MM-YYYY').weekday()]
           return html`
-            <li><a href='/day/${text.date}'>${weekday}: ${text.name}</a></li>
+            <li><a href='${state.paths.app}/day/${text}'>${weekday}, ${text}</a></li>
           `
         })
         }

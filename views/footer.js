@@ -3,6 +3,8 @@ const html = require('choo/html')
 module.exports = view
 
 function view (state, emit) {
+  return html`<footer>de-implemented</footer>`
+  /*
   const currentText = state.texts.find((text) => {
     return text.date === state.params.date
   }) || {
@@ -16,4 +18,5 @@ function view (state, emit) {
     }
     </footer>
   `
+  */
 }

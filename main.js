@@ -9,7 +9,9 @@ var app = electron.app
 var win
 
 var windowStyles = {
-  width: 800,
+  x: 0,
+  y: 0,
+  width: 640,
   height: 1000,
   titleBarStyle: 'hidden-inset',
   minWidth: 640,

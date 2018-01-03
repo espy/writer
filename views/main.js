@@ -30,10 +30,7 @@ function view (state, emit) {
       ondragend=${onDragEnd}
     >
       ${fileBrowser(state, emit)}
-      ${state.params.date
-        ? textPane.render(state, emit)
-        : ''
-      }
+      ${textPane.render(state, emit)}
       ${state.viewstate.theme && themePreview(state.viewstate.theme, emit)}
       ${footer(state, emit)}
     </body>

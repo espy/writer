@@ -4,18 +4,20 @@ const synonyms = require('../common/synonyms_en_us')()
 
 class TextPane extends Nanocomponent {
   createElement (state, emit) {
+    console.log('rendering TextPane')
     this.state = state
     this.emit = emit
     this.onInputChange = this.onInputChange.bind(this)
     this.onKeyDown = this.onKeyDown.bind(this)
-    this.currentText = this.getCurrentText()
+    this.text = this.state.currentText ? this.state.currentText.text : 'No text found'
+    this.date = this.state.currentText ? this.state.currentText.date : undefined
 
     return html`
     <section class='text-pane'>
       <textarea
         onkeyup=${this.onInputChange}
         onkeydown=${this.onKeyDown}>
-        ${this.currentText.text}
+        ${this.text}
       </textarea>
     </section>
     `
@@ -23,16 +25,10 @@ class TextPane extends Nanocomponent {
 
   // Should the component re-render?
   update (state, emit) {
+    // If there’s no text to show, don’t update
+    if (!this.state.currentText.date) return false
     // return true (do re-render) if the current text isn’t for the current date
-    return this.state.params.date !== this.currentText.date
-  }
-
-  getCurrentText () {
-    return this.state.texts.find((text) => {
-      return text.date === this.state.params.date
-    }) || {
-      text: 'No text stored for this date'
-    }
+    return this.state.currentText.date !== this.date
   }
 
   resetSynonymState (e) {
@@ -46,8 +42,7 @@ class TextPane extends Nanocomponent {
       return
     }
     this.emit('text:update', {
-      date: this.currentText.date,
-      name: this.currentText.name,
+      date: this.state.currentText.date,
       text: e.target.value,
       chars: e.target.value.length,
       words: e.target.value.split(' ').length
@@ -102,8 +97,7 @@ class TextPane extends Nanocomponent {
       e.target.setSelectionRange(selectionEnd, selectionEnd)
       // Store the updated text
       this.emit('text:update', {
-        date: this.currentText.date,
-        name: this.currentText.name,
+        date: this.state.currentText.date,
         text: updatedText,
         chars: e.target.value.length,
         words: e.target.value.split(' ').length
