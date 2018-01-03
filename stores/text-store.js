@@ -67,6 +67,7 @@ module.exports = function (state, emitter) {
 
   function updateText (updatedText) {
     // TODO: this needs to debounce writes, I think
+    if (updatedText.text.length === 0) return
     fs.writeFile(path.join(textsPath, `${updatedText.date}.txt`), updatedText.text, (err) => {
       if (err) {
         console.log(`error writing ${updatedText.date} text to the userdata folder:`, err)
