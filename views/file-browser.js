@@ -12,7 +12,7 @@ function view (state, emit) {
         : state.texts.map((text) => {
           const weekday = moment.weekdays()[moment(text, 'DD-MM-YYYY').weekday()]
           return html`
-            <li><a href='${state.paths.app}/day/${text}'>${weekday}, ${text}</a></li>
+            <li><a href='#/day/${text}'>${weekday}, ${text}</a></li>
           `
         })
         }

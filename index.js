@@ -29,7 +29,7 @@ app.use(require('./common/drop-handler'))
 app.use(require('./common/theme-handler'))
 
 app.route('/', require('./views/main'))
-app.route('/day/:date', require('./views/main'))
+app.route('#/day/:date', require('./views/main'))
 app.route('/*', require('./views/404'))
 
 if (!module.parent) app.mount('body')

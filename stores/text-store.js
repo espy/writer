@@ -72,25 +72,36 @@ module.exports = function (state, emitter) {
     })
   }
 
+  function loadCurrentText () {
+    // Check whether we need to do anything
+    if (state.params && state.params.date && state.route === '#/day/:date') {
+      fs.readFile(path.join(textsPath, `${state.params.date}.txt`), 'utf8', (err, data) => {
+        if (err) {
+          console.log('error loading user text', state.params.date, err)
+        }
+        state.currentText = {
+          text: data,
+          date: state.params.date
+        }
+        console.log('text loaded render')
+        emitter.emit('render')
+      })
+    }
+  }
+
   emitter.on('navigate', onNavigate)
 
   function onNavigate () {
     // Timeout because of https://github.com/choojs/choo/issues/463
     setTimeout(() => {
-      // Check whether we need to do anything
-      if (state.params.date && state.route === '/day/:date') {
-        fs.readFile(path.join(textsPath, `${state.params.date}.txt`), 'utf8', (err, data) => {
-          if (err) {
-            console.log('error loading user text', state.params.date, err)
-          }
-          state.currentText = {
-            text: data,
-            date: state.params.date
-          }
-          console.log('text loaded render')
-          emitter.emit('render')
-        })
-      }
+      loadCurrentText()
     }, 100)
   }
+
+  emitter.on('DOMContentLoaded', function () {
+    // Do this once on startup in case we’re on a text route
+    // Needs to be in DOMContentLoaded because otherwise `state.params`
+    // and `state.route` are undefined
+    loadCurrentText()
+  })
 }

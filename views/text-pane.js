@@ -4,7 +4,6 @@ const synonyms = require('../common/synonyms_en_us')()
 
 class TextPane extends Nanocomponent {
   createElement (state, emit) {
-    console.log('rendering TextPane')
     this.state = state
     this.emit = emit
     this.onInputChange = this.onInputChange.bind(this)
