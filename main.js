@@ -15,7 +15,8 @@ var windowStyles = {
   height: 1000,
   titleBarStyle: 'hidden-inset',
   minWidth: 640,
-  minHeight: 395
+  minHeight: 395,
+  show: false
 }
 
 app.setName('writer-electron')
@@ -37,6 +38,11 @@ app.on('ready', function () {
     if (process.env.NODE_ENV === 'development') {
       win.webContents.openDevTools({ mode: 'detach' })
     }
+  })
+
+  win.on('ready-to-show', function () {
+    win.show()
+    win.focus()
   })
 
   win.on('closed', function () {
