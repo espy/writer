@@ -19,6 +19,9 @@ There is a file browsing shelf on the left side, which is basically a calendar. 
   - [x] Store theme files on disk
   - [ ] Store text files on disk
 
+## Bugs
+- [ ] simple-grep doesn’t support case insensitivity
+
 # Development
 
 You need two terminals running at once, one with `$ npm run build`, which runs the Bankai server and hosts the Choo app, and one with `$ npm start`, which runs the dev instance of Electron.
