@@ -1,6 +1,7 @@
 var resolvePath = require('electron-collection/resolve-path')
 var defaultMenu = require('electron-collection/default-menu')
 var electron = require('electron')
+const windowStateKeeper = require('electron-window-state')
 
 var BrowserWindow = electron.BrowserWindow
 var Menu = electron.Menu
@@ -9,10 +10,6 @@ var app = electron.app
 var win
 
 var windowStyles = {
-  x: 0,
-  y: 0,
-  width: 640,
-  height: 1000,
   titleBarStyle: 'hidden-inset',
   minWidth: 640,
   minHeight: 395,
@@ -25,7 +22,18 @@ var shouldQuit = app.makeSingleInstance(createInstance)
 if (shouldQuit) app.quit()
 
 app.on('ready', function () {
+  let mainWindowState = windowStateKeeper({
+    defaultWidth: 640,
+    defaultHeight: 1000
+  })
+
+  windowStyles.x = mainWindowState.x
+  windowStyles.y = mainWindowState.y
+  windowStyles.width = mainWindowState.width
+  windowStyles.height = mainWindowState.height
+
   win = new BrowserWindow(windowStyles)
+  mainWindowState.manage(win)
   var indexPath = process.env.NODE_ENV === 'development'
   ? resolvePath('./index.html')
   : resolvePath('./index_prod.html')
