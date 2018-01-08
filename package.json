@@ -37,7 +37,6 @@
     "fs-extra": "^5.0.0",
     "moment": "^2.20.1",
     "nanocomponent": "^6.5.0",
-    "simple-grep": "0.0.1",
     "tachyons": "^4.9.0"
   },
   "devDependencies": {

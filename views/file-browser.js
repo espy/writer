@@ -17,14 +17,14 @@ function view (state, emit) {
     }
   }
   calendar.reverse()
-  if (state.search && state.search.results.length > 0) {
+  if (state.search && state.search.files.length > 0) {
     calendar = calendar.filter((date) => {
-      return !!state.search.results.find((item) => {
-        return item.file.split('/').pop().split('.')[0] === date
+      return !!state.search.files.find((file) => {
+        return file.fileName.split('/').pop().split('.')[0] === date
       })
     })
   }
-  if (state.search && state.search.results.length === 0) {
+  if (state.search && state.search.files.length === 0) {
     calendar = []
   }
   return html`
