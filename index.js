@@ -28,6 +28,7 @@ app.use(require('./stores/search-store'))
 // Global handlers
 app.use(require('./common/drop-handler'))
 app.use(require('./common/theme-handler'))
+app.use(require('./common/keyboard-handler'))
 
 app.route('/', require('./views/main'))
 app.route('#/day/:date', require('./views/main'))

@@ -12,7 +12,7 @@ class TextPane extends Nanocomponent {
     this.date = this.state.currentText ? this.state.currentText.date : undefined
 
     return html`
-    <section class='text-pane'>
+    <section class='text-pane' id='editor'>
       <textarea
         onkeyup=${this.onInputChange}
         onkeydown=${this.onKeyDown}>
@@ -102,12 +102,8 @@ class TextPane extends Nanocomponent {
         words: e.target.value.split(' ').length
       })
       this.resetSynonymState(e)
-      return
     }
-    // ESC
-    if (e.keyCode === 27) {
-      this.resetSynonymState(e)
-    }
+    // ESC handling is done globally in common/keyboard-handler.js
   }
 }
 

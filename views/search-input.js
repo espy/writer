@@ -8,7 +8,7 @@ class SearchInput extends Nanocomponent {
     this.onKeyUp = this.onKeyUp.bind(this)
 
     return html`
-      <input type='text' onkeyup=${this.onKeyUp}></input>
+      <input type='text' onkeyup=${this.onKeyUp} id='search-input'></input>
     `
   }
 
@@ -18,7 +18,14 @@ class SearchInput extends Nanocomponent {
   }
 
   onKeyUp (e) {
-    this.emit('search:term', e.target.value)
+    // ESC
+    if (e.keyCode === 27 && this.state.search) {
+      document.getElementById('editor').focus()
+      document.getElementById('search-input').value = ''
+      this.emit('search:reset')
+    } else {
+      this.emit('search:term', e.target.value)
+    }
   }
 }
 
