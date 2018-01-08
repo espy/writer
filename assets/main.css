@@ -88,7 +88,24 @@ ul {
 
 header {
   grid-area: header;
-  padding: 0.5em 1em;
+  padding: 0;
+}
+
+header input {
+  background: var(--b_low);
+  color: var(--f_high);
+  border: 1px solid var(--f_low);
+  padding: 0.35em 1em;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+}
+
+header input:focus {
+  outline: none;
+  border-color: var(--f_high);
+  background-color: var(--f_high);
+  color: var(--b_low);
 }
 
 footer {
