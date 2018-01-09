@@ -19,6 +19,7 @@ class SearchInput extends Nanocomponent {
 
   onKeyUp (e) {
     // ESC
+    // FIX: only if ESC and in search mode, this.state.search is wrong
     if (e.keyCode === 27 && this.state.search) {
       document.getElementById('editor').focus()
       document.getElementById('search-input').value = ''

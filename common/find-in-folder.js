@@ -2,7 +2,9 @@ var findInFolder = (what, where, callback) => {
   var exec = require('child_process').exec
   exec(`grep ${what} '${where}' -inr`, (err, stdin, stdout) => {
     if (err) {
-      console.error('Couldn’t grep! ', err)
+      // console.log('Couldn’t grep! ', err)
+      callback(undefined)
+      return
     }
     var list = []
     // Each result is a new line in the format file:linenum:line
