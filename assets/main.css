@@ -18,7 +18,7 @@
 
 body {
   -webkit-app-region: drag;
-  padding: 30px 0 0 0;
+  padding: 36px 0 0 0;
   position: absolute;
   top: 0;
   left: 0;
@@ -30,6 +30,10 @@ body {
   grid-template-columns: 300px auto;
   grid-template-rows: 2em auto 2em;
   grid-template-areas: "header header" "file-browser main" "footer footer";
+}
+
+body, input, textarea {
+  font-family: 'Input Mono';
 }
 
 a {
@@ -47,18 +51,29 @@ ul {
   grid-area: file-browser;
   width: 300px;
   padding: 1em;
-  border-right: 1px solid var(--f_low);
+  line-height: 1.25;
 }
 
 .sidebar__list li{
   color: var(--f_med);
 }
 
-.sidebar__list li.active{
+.sidebar__list li.active {
   color: var(--f_high);
   border-left: 3px solid currentColor;
   padding-left: 3px;
   margin-left: -6px;
+}
+
+.sidebar__list li:hover {
+  color: var(--f_med);
+  border-left: 3px solid currentColor;
+  padding-left: 3px;
+  margin-left: -6px;
+}
+
+.sidebar__list li:hover a {
+  color: var(--f_med);
 }
 
 .text-pane {
@@ -93,9 +108,9 @@ header {
 }
 
 header input {
-  background: var(--b_low);
+  background: var(--background);
   color: var(--f_high);
-  border: 1px solid var(--f_low);
+  border: 1px solid var(--b_low);
   padding: 0.35em 1em;
   border-left: none;
   border-right: none;

@@ -24,7 +24,6 @@ function view (state, emit) {
 
   return html`
     <body
-      class="sans-serif"
       ondrop=${onDrop}
       ondragover=${onDragOver}
       ondragleave=${onDragLeave}

@@ -7,7 +7,7 @@ module.exports = view
 function view (state, emit) {
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
   return html`
-    <body class="sans-serif">
+    <body>
       <h1 class="f-headline pa3 pa4-ns">
         404 - route not found
       </h1>
