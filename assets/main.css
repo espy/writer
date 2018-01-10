@@ -50,7 +50,7 @@ ul {
 .file-browser {
   grid-area: file-browser;
   width: 300px;
-  padding: 1em;
+  padding: 2em;
   line-height: 1.25;
 }
 
@@ -64,18 +64,28 @@ ul {
 
 .sidebar__list li.is-active a{
   color: var(--f_med);
-  border-left: 3px solid currentColor;
-  padding-left: 3px;
-  margin-left: -6px;
+  margin-left: -1.35em;
 }
 
 .sidebar__list li a:hover,
 .sidebar__list li a:focus {
   color: var(--f_high);
-  border-left: 3px solid currentColor;
-  padding-left: 3px;
-  margin-left: -6px;
   outline: none;
+  margin-left: -1.35em;
+}
+
+.sidebar__list li.is-active a:before,
+.sidebar__list li a:hover:before,
+.sidebar__list li a:focus:before {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border: 2px solid currentColor;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 0.6em;
+  background: currentColor;
+  box-shadow: 0 0 0 2px var(--background) inset;
 }
 
 .text-pane {
@@ -88,7 +98,7 @@ ul {
   resize: none;
   background: transparent;
   overflow: hidden;
-  padding: 1em;
+  padding: 2em;
   width: 100%;
   height: 100%;
   max-width: 50em;
