@@ -1,13 +1,13 @@
 :root {
-  --background: #000;
-  --f_high: #fff;
-  --f_med: #999;
-  --f_low: #555;
-  --f_inv: #000;
-  --b_high: #000;
-  --b_med: #555;
-  --b_low: #222;
-  --b_inv: #fff;
+  --background: #29272b;
+  --f_high: #ffffff;
+  --f_med: #e47464;
+  --f_low: #66606b;
+  --f_inv: #000000;
+  --b_high: #ffffff;
+  --b_med: #5f5353;
+  --b_low: #47424a;
+  --b_inv: #e47464;
 }
 
 /* Frameless Electron windows aren’t draggable. Here we make everything undraggable, and then explicitly allow dragging on the body. This results in only the top bar (where the traffic light buttons are) being used as a drag handle for the entire window */
@@ -83,7 +83,8 @@ ul {
 }
 
 .text-pane textarea::selection {
-  background: var(--b_med);
+  color: var(--f_inv);
+  background: var(--b_inv);
 }
 
 header {
@@ -103,9 +104,9 @@ header input {
 
 header input:focus {
   outline: none;
-  border-color: var(--f_high);
-  background-color: var(--f_high);
-  color: var(--b_low);
+  border-color: var(--b_inv);
+  background-color: var(--b_inv);
+  color: var(--f_inv);
 }
 
 footer {
