@@ -37,8 +37,11 @@ function view (state, emit) {
         : calendar.map((date) => {
           const weekday = moment.weekdays()[moment(date, dateFormat).weekday()]
           const dateString = moment(date).format('DD.MM.YYYY')
+          const isEmptyClass = state.texts.find((text) => {
+            return text === date
+          }) ? '' : 'empty-text'
           return html`
-            <li><a href='#/day/${date}'>${dateString} - ${weekday}</a></li>
+            <li class=${isEmptyClass}><a href='#/day/${date}'>${dateString} - ${weekday}</a></li>
           `
         })
         }
