@@ -5,7 +5,7 @@ A themable writing app that encourages regular writing, tracks word count goals 
 There is a file browsing shelf on the left side, which is basically a calendar. Selecting a file will preview it in the main pane on the right.
 
 ## Roadmap
-- [ ] Calendarised file menu in the sidebar, you select days, not actual files.
+- [x] Calendarised file menu in the sidebar, you select days, not actual files.
   - [ ] File previews show stats (wordcount, date)
 - [x] Themeable with hundredrabbits `.thm` files, per drag and drop, with preview
   - [ ] Once file storage is implemented, add a theme management pane
@@ -17,10 +17,10 @@ There is a file browsing shelf on the left side, which is basically a calendar. 
   - [ ] Support more languages
 - [x] Electronise the app!
   - [x] Store theme files on disk
-  - [ ] Store text files on disk
+  - [x] Store text files on disk
 
 ## Bugs
-- [ ] simple-grep doesn’t support case insensitivity
+- [x] simple-grep doesn’t support case insensitivity
 
 # Development
 
