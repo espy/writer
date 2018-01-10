@@ -58,26 +58,24 @@ ul {
   color: var(--f_med);
 }
 
-.sidebar__list li.empty-text a {
+.sidebar__list li.is-empty a {
   color: var(--f_low);
 }
 
-.sidebar__list li.active {
+.sidebar__list li.is-active a{
   color: var(--f_med);
   border-left: 3px solid currentColor;
   padding-left: 3px;
   margin-left: -6px;
 }
 
-.sidebar__list li:hover {
+.sidebar__list li a:hover,
+.sidebar__list li a:focus {
   color: var(--f_high);
   border-left: 3px solid currentColor;
   padding-left: 3px;
   margin-left: -6px;
-}
-
-.sidebar__list li:hover a {
-  color: var(--f_high);
+  outline: none;
 }
 
 .text-pane {
@@ -93,6 +91,7 @@ ul {
   padding: 1em;
   width: 100%;
   height: 100%;
+  max-width: 50em;
   line-height: 1.25;
 }
 
